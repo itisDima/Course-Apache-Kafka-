@@ -76,4 +76,34 @@ cat zookeeper.properties
 cat server.properties
 ```
 ### 1. Запуск Kafka + ZooKeeper
-1. Запустим ZooKeeper в режиме daemon
+1. Запустим ZooKeeper в режиме daemon, находясь в директории `/opt/kafka`, используя утилиту `zookeeper-server-start.sh`:
+```bash
+bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+```
+2. Запустим Kafka в режиме daemon, находясь в директории `/opt/kafka`, используя утилиту `kafka-server-start.sh`:
+```bash
+bin/kafka-server-start.sh -daemon config/server.properties
+```
+3. **jps** — это утилита командной строки, которая предоставляет информацию о процессах Java Virtual Machine (JVM), текущих в системе. Проверим, запущенные сервисы с помощью утилиты `jps`:
+```bash
+jps
+```
+Результат:
+```bash
+3136 Kafka
+3221 Jps                          
+2342 QuorumPeerMain
+```
+- [x] Kafka запущена
+- [x] ZooKeeper(QuorumPeerMain) запущен
+
+4. Посмотрим список топиков, используя утилиту `kafka-topics.sh`:
+```bash
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+```
+В результате получим пустой список, так как мы не создавали топики.
+
+5. Создадим топик и назавем его `test`:
+```bash
+bin/kafka-topics.sh --create --topic test --bootstrap-server localhost:9092
+```
