@@ -77,7 +77,7 @@ cat zookeeper.properties
 #Посмотрим содержимое файла service.properties
 cat server.properties
 ```
-### 1. Запуск Kafka + ZooKeeper
+### 2. Запуск Kafka + ZooKeeper
 1. Запустим ZooKeeper в режиме daemon, находясь в директории `/opt/kafka`, используя утилиту `zookeeper-server-start.sh`:
 ```bash
 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
