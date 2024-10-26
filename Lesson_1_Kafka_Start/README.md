@@ -190,7 +190,7 @@ bin/kafka-console-producer.sh --topic test --bootstrap-server localhost:9092 --p
 ```
 12. Прочитаем сообщения в топике `test`, с выводом ключей и оффсетов у сообщений:
 ```bash
-kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.offset=true
+bin/kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.offset=true
 ```
 Результат:
 ```bash
