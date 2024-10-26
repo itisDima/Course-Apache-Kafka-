@@ -27,7 +27,9 @@ java -version
 ```
 Результат:
 ```bash
-openjdk version "21.0.4" 2024-07-16                                    OpenJDK Runtime Environment (build 21.0.4+7-Ubuntu-1ubuntu224.04)                                           OpenJDK 64-Bit Server VM (build 21.0.4+7-Ubuntu-1ubuntu224.04, mixed mode, sharing)   
+openjdk version "21.0.4" 2024-07-16   
+OpenJDK Runtime Environment (build 21.0.4 +7-Ubuntu-1ubuntu224.04)                                    
+OpenJDK 64-Bit Server VM (build 21.0.4+7-Ubuntu-1ubuntu224.04, mixed mode, sharing)   
 ```
 
 4. Переходим [на официальный сайт Apache Kafka](https://kafka.apache.org/downloads) и скачиваем последнюю версию Kafka.
