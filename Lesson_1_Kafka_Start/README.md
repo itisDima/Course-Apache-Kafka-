@@ -77,6 +77,7 @@ cat zookeeper.properties
 #Посмотрим содержимое файла service.properties
 cat server.properties
 ```
+___
 ### 2. Запуск Kafka + ZooKeeper
 1. Запустим ZooKeeper в режиме daemon, находясь в директории `/opt/kafka`, используя утилиту `zookeeper-server-start.sh`:
 ```bash
@@ -98,7 +99,7 @@ jps
 ```
 - [x] Kafka запущена
 - [x] ZooKeeper(QuorumPeerMain) запущен
-
+___
 ### Тест запуска Kafka+ZooKeeper
 Создадим топик, попробуем записать в него сообщения. Прочитаем сообщения с брокера, записанные в тестовый топик.
 1. Посмотрим список топиков, используя утилиту `kafka-topics.sh`:
