@@ -6,10 +6,11 @@
 - **Java Development Kit** - бесплатно распространяемый корпорацией Oracle Corporation (ранее Sun Microsystems) комплект разработчика приложений на языке Java, включающий в себя компилятор Java (javac), стандартные библиотеки классов Java, примеры, документацию, различные утилиты и исполнительную систему Java (JRE).
 
 ### Данный урок включает себя три этапа:
+1. Установка Kafka и просмотр файлов директории
 1. Запуск Kafka + ZooKeeper
 2. Тестирование Kafka+ZooKeeper
 ____
-### 1. Запуск Kafka + ZooKeeper
+### 1. Установка Kafka и просмотр файлов директории
 Создаваемый кластер будет состять из одного брокера(Kafka) и одного сервиса ZooKeeper. Схема взимодействия:
 ![alt text](image.png)
 
@@ -31,6 +32,48 @@ openjdk version "21.0.4" 2024-07-16                                    OpenJDK R
 
 4. Переходим [на официальный сайт Apache Kafka](https://kafka.apache.org/downloads) и скачиваем последнюю версию Kafka.
 
-5. Меняем название папки с скаченным архивом на `kafka` и опредеяем по пути `opt/kafka`
+5. Меняем название скаченной папки с файлами для запуска на `kafka` и опредеяем по пути `opt/kafka`
 
-6.
+6. Детальнее посмотрим на содержимое папки:
+```bash
+#Переходим в папку kafka
+cd /opt/kafka
+#Просмотр содержимого папки kafka
+ls
+```
+Результат:
+```bash
+LICENSE  
+LICENSE:Zone.Identifier  
+NOTICE  
+NOTICE:Zone.Identifier  
+bin  
+config  
+libs  
+licenses  
+logs  
+site-docs  
+```
+7. Основные папки для запуска Kafka + ZooKeeper:
+
+В папке `/opt/kafka/config` располагаются готовые файлы конфигурации брокера(Kafka) и сервиса(ZooKeeper)
+
+В папке `opt/kafka/bin` располагаются готовые `.sh` файлы скриптов для использования в запуске брокера(Kafka) и сервиса(ZooKeeper)
+
+8. Директория `/opt/kafka/config` хранит два необходимых файла конфигурации для запуска:
+    - `zookeeper.properties` - config для ZooKeeper
+    - `server.properties` - config для Kafka
+
+9. Можно посмотреть на содержимое конфигов с помощью команд:
+```bash
+#Переходим в папку
+cd /opt/kafka/config
+
+#Посмотрим содержимое файла zookeeper.properties
+cat zookeeper.properties
+
+#Посмотрим содержимое файла service.properties
+cat server.properties
+```
+### 1. Запуск Kafka + ZooKeeper
+1. Запустим ZooKeeper в режиме daemon
