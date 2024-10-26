@@ -167,7 +167,7 @@ bin/kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --f
 2
 3
 ```
-10. Попробуем прочитать сообщения с указнием ключей у сообщений. Указываем дополнительно `print.key=true`:
+10. Попробуем прочитать сообщения с указнием ключей. Указываем дополнительно `print.key=true`:
 ```bash
 bin/kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --from-beginning --property print.key=true
 ```
@@ -176,4 +176,34 @@ bin/kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --f
 null    1
 null    2
 null    3
+```
+11. Попробуем записать сообщения в топик, с присвоением ключей. Использовать для разделения key: value будем сивмол `,`:
+```bash
+bin/kafka-console-producer.sh --topic test --bootstrap-server localhost:9092 --property parse.key=true --property key.separator=,
+```
+Последовательно отправляем сообщения, с разделителем `,`:
+```bash
+>1,1
+>2,2
+>3,3
+```
+12. Прочитаем сообщения в топике `test`, с выводом ключей и оффсетов у сообщений:
+```bash
+kafka-console-consumer.sh --topic test --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.offset=true
+```
+Результат:
+```bash
+Offset:0        null    1
+Offset:1        null    2
+Offset:2        null    3
+Offset:3        1       1
+Offset:4        2       2
+Offset:5        3       3
+```
+13. После успешного теста с топиком, завершаем текущие сервисы:
+```bash
+bin/kafka-server-stop.sh
+```
+```bash
+bin/zookeeper-server-stop.sh
 ```
